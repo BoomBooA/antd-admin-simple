@@ -19,7 +19,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className='container mx-auto grid place-items-center h-screen bg-slate-50'>
+    <div className='grid place-items-center w-screen h-screen bg-slate-50'>
       <div className='rounded-md shadow-md shadow-gray-200 bg-white'>
         <div className='p-10 grid place-items-center'>
           <h1 className='text-2xl'>Login Page</h1>
