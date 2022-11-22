@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import {
   Avatar,
   Dropdown,
@@ -19,12 +19,12 @@ import {
   faRightFromBracket,
   faUser
 } from '@fortawesome/free-solid-svg-icons'
-
 import { COPYRIGHT } from '@/config'
 
 const { Header, Footer, Sider, Content } = Layout
 
 const Root: React.FC = () => {
+  const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
 
   const userDropDownMenus: MenuProps['items'] = [
@@ -59,7 +59,10 @@ const Root: React.FC = () => {
           className='text-lg'
           icon={faRightFromBracket}
         />
-      )
+      ),
+      onClick: () => {
+        navigate('/login')
+      }
     }
   ]
 

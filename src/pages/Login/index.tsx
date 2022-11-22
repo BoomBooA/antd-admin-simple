@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Button,
   Checkbox,
@@ -6,11 +7,16 @@ import {
   Input,
   message
 } from 'antd'
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faLock,
+  faUser
+} from '@fortawesome/free-solid-svg-icons'
 import { login } from '@/services/session'
 import { APP_NAME } from '@/config'
 
 const Login: React.FC = () => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [rememberUser, setRememberUser] = useState(false)
   const [form] = Form.useForm()
@@ -28,6 +34,8 @@ const Login: React.FC = () => {
           content: response.message
         })
       }
+
+      navigate('/')
     } catch (error) {
 
     }
@@ -61,7 +69,7 @@ const Login: React.FC = () => {
                 rules={[{ required: true, message: 'please input your username' }]}
               >
                 <Input
-                  prefix={<UserOutlined />}
+                  prefix={<FontAwesomeIcon icon={faUser} />}
                   placeholder='Enter your username'
                 />
               </Form.Item>
@@ -74,7 +82,7 @@ const Login: React.FC = () => {
                 ]}
               >
                 <Input
-                  prefix={<LockOutlined />}
+                  prefix={<FontAwesomeIcon icon={faLock} />}
                   placeholder='Enter your password'
                   type='password'
                 />
