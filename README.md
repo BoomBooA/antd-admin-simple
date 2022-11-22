@@ -7,5 +7,6 @@ A React application build with Ant Design
 - [ ] i18n
 - [ ] Table
 - [ ] Card List
+- [ ] Mock data
 - [ ] ...etc
 
