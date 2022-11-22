@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {
   Avatar,
   Dropdown,
   Layout,
   Menu
 } from 'antd'
-import { getI18n } from 'react-i18next'
 import type { MenuProps } from 'antd'
 import {
   MenuFoldOutlined,
@@ -26,35 +26,42 @@ const { Header, Footer, Sider, Content } = Layout
 
 const Root: React.FC = () => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [collapsed, setCollapsed] = useState(false)
 
   const userDropDownMenus: MenuProps['items'] = [
     {
       key: 'settings',
-      label: 'Settings',
+      label: t('menu.settings'),
       icon: (
         <FontAwesomeIcon
           className='text-lg'
           icon={faGear}
         />
-      )
+      ),
+      onClick: () => {
+        navigate('/settings/basic')
+      }
     },
     {
       key: 'password',
-      label: 'Password',
+      label: t('menu.password'),
       icon: (
         <FontAwesomeIcon
           className='text-lg'
           icon={faKey}
         />
-      )
+      ),
+      onClick: () => {
+        navigate('/settings/password')
+      }
     },
     {
       type: 'divider'
     },
     {
       key: 'logout',
-      label: 'Logout',
+      label: t('menu.logout'),
       icon: (
         <FontAwesomeIcon
           className='text-lg'
