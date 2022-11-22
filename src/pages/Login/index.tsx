@@ -8,6 +8,7 @@ import {
 } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { login } from '@/services/session'
+import { APP_NAME } from '@/config'
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false)
@@ -42,7 +43,7 @@ const Login: React.FC = () => {
     <div className='grid place-items-center w-screen h-screen bg-slate-50'>
       <div className='rounded-md shadow-md shadow-gray-200 bg-white'>
         <div className='p-10 grid place-items-center'>
-          <h1 className='text-2xl'>Login Page</h1>
+          <h1 className='text-2xl'>{APP_NAME}</h1>
           <div className='w-96'>
             <Form
               layout='vertical'

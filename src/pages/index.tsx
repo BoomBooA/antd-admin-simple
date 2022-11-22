@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const IndexPage: React.FC = () => {
   return (
-    <div></div>
+    <div>Index</div>
   )
 }
 
