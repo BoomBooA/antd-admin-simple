@@ -6,12 +6,19 @@ import {
   Input
 } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { login } from '@/services/session'
 
 const Login: React.FC = () => {
   const [form] = Form.useForm()
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values)
+  const onFinish = async (values: any) => {
+    try {
+      const response = await login(values)
+
+      console.log(response)
+    } catch (error) {
+
+    }
   }
 
   const onFinishFailed = (errorInfo: any) => {
