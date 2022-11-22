@@ -1,24 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Checkbox,
   Form,
-  Input
+  Input,
+  message
 } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { login } from '@/services/session'
 
 const Login: React.FC = () => {
+  const [loading, setLoading] = useState(false)
+  const [rememberUser, setRememberUser] = useState(false)
   const [form] = Form.useForm()
+
+  useEffect(() => {
+
+  }, [])
 
   const onFinish = async (values: any) => {
     try {
+      setLoading(true)
       const response = await login(values)
-
-      console.log(response)
+      if (response.code === 0) {
+        message.error({
+          content: response.message
+        })
+      }
     } catch (error) {
 
     }
+
+    setLoading(false)
   }
 
   const onFinishFailed = (errorInfo: any) => {
@@ -34,6 +47,9 @@ const Login: React.FC = () => {
             <Form
               layout='vertical'
               form={form}
+              initialValues={{
+                remember: rememberUser
+              }}
               requiredMark={false}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -62,11 +78,18 @@ const Login: React.FC = () => {
                   type='password'
                 />
               </Form.Item>
-              <Form.Item>
+              <Form.Item
+                name='remember'
+                valuePropName='checked'
+              >
                 <Checkbox className='justify-around'>Remember me</Checkbox>
               </Form.Item>
               <Form.Item className='m-0'>
-                <Button block htmlType='submit'>
+                <Button
+                  block
+                  htmlType='submit'
+                  loading={loading}
+                >
                   Sign in
                 </Button>
               </Form.Item>

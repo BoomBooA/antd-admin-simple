@@ -5,6 +5,7 @@ export default [
   {
     url: '/api/login',
     method: 'post',
+    timeout: 1000,
     response: ({ body }: any) => {
       const {
         username,
