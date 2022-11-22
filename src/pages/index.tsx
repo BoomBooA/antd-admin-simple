@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const IndexPage: React.FC = () => {
+  const { t } = useTranslation()
+
   return (
-    <div>Index</div>
+    <div>
+      <div>Index</div>
+      <h1>{t('language')}</h1>
+    </div>
   )
 }
 

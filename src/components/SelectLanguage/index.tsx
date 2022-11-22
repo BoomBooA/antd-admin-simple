@@ -6,11 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLanguage } from '@fortawesome/free-solid-svg-icons'
 
 const SelectLanguage: React.FC = () => {
-  const i18Instance = getI18n()
-  const resources = i18Instance.options.resources || {}
+  const i18n = getI18n()
+  const resources = i18n.options.resources || {}
+
+  // render language list
   const dropdownItems: MenuProps['items'] = Object.keys(resources).map(language => ({
     key: language,
-    label: get(resources, `${language}.translation.language`, '') as String
+    label: get(resources, `${language}.translation.language`, '') as String,
+    onClick: () => i18n.changeLanguage(language)
   }))
 
   return (
@@ -18,7 +21,9 @@ const SelectLanguage: React.FC = () => {
       className='cursor-pointer'
       overlayClassName='w-40'
       menu={{
-        items: dropdownItems
+        items: dropdownItems,
+        selectable: true,
+        defaultSelectedKeys: [i18n.language]
       }}
     >
       <FontAwesomeIcon
