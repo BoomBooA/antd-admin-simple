@@ -6,6 +6,7 @@ import {
   Layout,
   Menu
 } from 'antd'
+import { getI18n } from 'react-i18next'
 import type { MenuProps } from 'antd'
 import {
   MenuFoldOutlined,
@@ -15,10 +16,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faGear,
   faKey,
-  faLanguage,
   faRightFromBracket,
   faUser
 } from '@fortawesome/free-solid-svg-icons'
+import SelectLanguage from '@/components/SelectLanguage'
 import { COPYRIGHT } from '@/config'
 
 const { Header, Footer, Sider, Content } = Layout
@@ -63,17 +64,6 @@ const Root: React.FC = () => {
       onClick: () => {
         navigate('/login')
       }
-    }
-  ]
-
-  const i18nDropDownMenus: MenuProps['items'] = [
-    {
-      key: 'en-US',
-      label: 'English'
-    },
-    {
-      key: 'zh-cn',
-      label: '简体中文'
     }
   ]
 
@@ -137,18 +127,9 @@ const Root: React.FC = () => {
                   <span className='px-2'>Admin</span>
                 </div>
               </Dropdown>
-              <Dropdown
-                className='cursor-pointer mx-2 pr-4'
-                overlayClassName='w-40'
-                menu={{
-                  items: i18nDropDownMenus
-                }}
-              >
-                <FontAwesomeIcon
-                  className='text-lg'
-                  icon={faLanguage}
-                />
-              </Dropdown>
+              <div className='mx-2 pr-4'>
+                <SelectLanguage />
+              </div>
             </div>
           </div>
         </Header>
