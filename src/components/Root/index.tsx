@@ -9,14 +9,17 @@ import {
 import type { MenuProps } from 'antd'
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  RightSquareOutlined,
-  SettingOutlined,
-  LockOutlined, GlobalOutlined
+  MenuUnfoldOutlined
 } from '@ant-design/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGear,
+  faKey,
+  faLanguage,
+  faRightFromBracket,
+  faUser
+} from '@fortawesome/free-solid-svg-icons'
+
 import { COPYRIGHT } from '@/config'
 
 const { Header, Footer, Sider, Content } = Layout
@@ -28,12 +31,22 @@ const Root: React.FC = () => {
     {
       key: 'settings',
       label: 'Settings',
-      icon: <SettingOutlined />
+      icon: (
+        <FontAwesomeIcon
+          className='text-lg'
+          icon={faGear}
+        />
+      )
     },
     {
       key: 'password',
       label: 'Password',
-      icon: <LockOutlined />
+      icon: (
+        <FontAwesomeIcon
+          className='text-lg'
+          icon={faKey}
+        />
+      )
     },
     {
       type: 'divider'
@@ -41,7 +54,12 @@ const Root: React.FC = () => {
     {
       key: 'logout',
       label: 'Logout',
-      icon: <RightSquareOutlined />
+      icon: (
+        <FontAwesomeIcon
+          className='text-lg'
+          icon={faRightFromBracket}
+        />
+      )
     }
   ]
 
@@ -72,17 +90,17 @@ const Root: React.FC = () => {
           items={[
             {
               key: '1',
-              icon: <UserOutlined />,
+              icon: '',
               label: 'nav 1'
             },
             {
               key: '2',
-              icon: <VideoCameraOutlined />,
+              icon: '',
               label: 'nav 2'
             },
             {
               key: '3',
-              icon: <UploadOutlined />,
+              icon: '',
               label: 'nav 3'
             }
           ]}
@@ -109,7 +127,9 @@ const Root: React.FC = () => {
                   <Avatar
                     size='small'
                     shape='square'
-                    icon={<UserOutlined />}
+                    icon={
+                      <FontAwesomeIcon icon={faUser} />
+                    }
                   />
                   <span className='px-2'>Admin</span>
                 </div>
@@ -121,7 +141,10 @@ const Root: React.FC = () => {
                   items: i18nDropDownMenus
                 }}
               >
-                <GlobalOutlined />
+                <FontAwesomeIcon
+                  className='text-lg'
+                  icon={faLanguage}
+                />
               </Dropdown>
             </div>
           </div>
