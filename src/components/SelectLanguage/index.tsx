@@ -18,7 +18,7 @@ const SelectLanguage: React.FC = () => {
 
   return (
     <Dropdown
-      className='cursor-pointer'
+      className='cursor-pointer ml-2 mr-4'
       overlayClassName='w-40'
       menu={{
         items: dropdownItems,
@@ -27,7 +27,7 @@ const SelectLanguage: React.FC = () => {
       }}
     >
       <FontAwesomeIcon
-        className='text-lg'
+        className='text-xl'
         icon={faLanguage}
       />
     </Dropdown>

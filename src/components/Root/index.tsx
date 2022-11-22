@@ -127,9 +127,7 @@ const Root: React.FC = () => {
                   <span className='px-2'>Admin</span>
                 </div>
               </Dropdown>
-              <div className='mx-2 pr-4'>
-                <SelectLanguage />
-              </div>
+              <SelectLanguage />
             </div>
           </div>
         </Header>
