@@ -1,7 +1,6 @@
 import {
-  defineConfig,
-  UserConfigExport,
-  ConfigEnv
+  ConfigEnv,
+  UserConfigExport
 } from 'vite'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -12,9 +11,13 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     plugins: [
       react(),
       viteMockServe({
-        // default
         mockPath: 'mock',
-        localEnabled: command === 'serve'
+        localEnabled: command === 'serve',
+        prodEnabled: command !== 'serve',
+        injectCode: `
+          import { setupProdMockServer } from './mock';
+          setupProdMockServer();
+        `
       })
     ],
     resolve: {
