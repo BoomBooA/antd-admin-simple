@@ -1,10 +1,23 @@
-import { defineConfig } from 'vite'
+import {
+  defineConfig,
+  UserConfigExport,
+  ConfigEnv
+} from 'vite'
+import { viteMockServe } from 'vite-plugin-mock'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000
+export default ({ command }: ConfigEnv): UserConfigExport => {
+  return {
+    plugins: [
+      react(),
+      viteMockServe({
+        // default
+        mockPath: 'mock',
+        localEnabled: command === 'serve'
+      })
+    ],
+    server: {
+      port: 3000
+    }
   }
-})
+}
