@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { message, Spin } from 'antd'
 import { SESSION_STORE_NAME } from '@/config'
 import { getSession } from '@/services/session'
@@ -12,6 +13,7 @@ type AuthorizedProps = {
 const Authorized: React.FC<AuthorizedProps> = ({ children }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const Authorized: React.FC<AuthorizedProps> = ({ children }) => {
         <Spin
           className='text-2xl'
           size='large'
-          tip='Loading'
+          tip={t('loading')}
         />
       </div>
     )
