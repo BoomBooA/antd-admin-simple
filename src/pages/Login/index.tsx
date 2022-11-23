@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
   Button,
   Checkbox,
@@ -20,6 +21,7 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [rememberUser, setRememberUser] = useState(false)
   const [form] = Form.useForm()
+  const dispatch = useDispatch()
 
   useEffect(() => {
 
@@ -34,6 +36,13 @@ const Login: React.FC = () => {
           content: response.message
         })
       }
+
+      dispatch({
+        type: 'session/update',
+        payload: {
+          username: values.username
+        }
+      })
 
       navigate('/')
     } catch (error) {
