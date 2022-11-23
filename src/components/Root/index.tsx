@@ -1,78 +1,19 @@
 import React, { useState } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import {
-  Avatar,
-  Dropdown,
-  Layout,
-  Menu
-} from 'antd'
-import type { MenuProps } from 'antd'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined
-} from '@ant-design/icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faGear,
-  faKey,
-  faRightFromBracket,
-  faUser
-} from '@fortawesome/free-solid-svg-icons'
-import SelectLanguage from '@/components/SelectLanguage'
+import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Layout, Menu } from 'antd'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { COPYRIGHT } from '@/config'
+import { RootState } from '@/store'
+import { SessionInitialState } from '@/store/session'
+import Language from '../Layout/Language'
+import User from '../Layout/User'
 
 const { Header, Footer, Sider, Content } = Layout
 
 const Root: React.FC = () => {
-  const navigate = useNavigate()
-  const { t } = useTranslation()
+  const session = useSelector<RootState>(state => state.session) as SessionInitialState
   const [collapsed, setCollapsed] = useState(false)
-
-  const userDropDownMenus: MenuProps['items'] = [
-    {
-      key: 'settings',
-      label: t('menu.settings'),
-      icon: (
-        <FontAwesomeIcon
-          className='text-lg'
-          icon={faGear}
-        />
-      ),
-      onClick: () => {
-        navigate('/settings/basic')
-      }
-    },
-    {
-      key: 'password',
-      label: t('menu.password'),
-      icon: (
-        <FontAwesomeIcon
-          className='text-lg'
-          icon={faKey}
-        />
-      ),
-      onClick: () => {
-        navigate('/settings/password')
-      }
-    },
-    {
-      type: 'divider'
-    },
-    {
-      key: 'logout',
-      label: t('menu.logout'),
-      icon: (
-        <FontAwesomeIcon
-          className='text-lg'
-          icon={faRightFromBracket}
-        />
-      ),
-      onClick: () => {
-        navigate('/login')
-      }
-    }
-  ]
 
   return (
     <Layout>
@@ -108,7 +49,7 @@ const Root: React.FC = () => {
       </Sider>
       <Layout className='site-layout'>
         <Header className='!bg-white !p-0'>
-          <div className='flex items-start justify-between'>
+          <div className='flex justify-between'>
             <div className='px-6'>
               {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                 className: 'trigger text-lg',
@@ -116,25 +57,10 @@ const Root: React.FC = () => {
               })}
             </div>
             <div className='flex items-center'>
-              <Dropdown
-                className='cursor-pointer'
-                overlayClassName='w-40'
-                menu={{
-                  items: userDropDownMenus
-                }}
-              >
-                <div className='flex items-center'>
-                  <Avatar
-                    size='small'
-                    shape='square'
-                    icon={
-                      <FontAwesomeIcon icon={faUser} />
-                    }
-                  />
-                  <span className='px-2'>Admin</span>
-                </div>
-              </Dropdown>
-              <SelectLanguage />
+              <User
+                username={session.username}
+              />
+              <Language />
             </div>
           </div>
         </Header>
