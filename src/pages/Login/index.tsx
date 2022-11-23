@@ -14,7 +14,7 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons'
 import { login } from '@/services/session'
-import { APP_NAME } from '@/config'
+import { APP_NAME, SESSION_FAKE_TOKEN, SESSION_STORE_NAME } from '@/config'
 
 const Login: React.FC = () => {
   const navigate = useNavigate()
@@ -24,7 +24,6 @@ const Login: React.FC = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-
   }, [])
 
   const onFinish = async (values: any) => {
@@ -36,6 +35,8 @@ const Login: React.FC = () => {
           content: response.message
         })
       }
+
+      sessionStorage.setItem(SESSION_STORE_NAME, SESSION_FAKE_TOKEN)
 
       dispatch({
         type: 'session/update',
