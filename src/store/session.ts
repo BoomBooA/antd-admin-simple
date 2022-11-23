@@ -17,8 +17,10 @@ export const sessionSlice = createSlice({
   initialState: sessionInitialState,
   reducers: {
     update(state, action) {
-      const { username } = action.payload
-      state.username = username
+      state = {
+        ...state,
+        ...action.payload
+      }
     },
     destroy() {
 

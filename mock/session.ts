@@ -25,5 +25,17 @@ export default [
     response: () => {
       return successResponse()
     }
+  },
+  {
+    url: '/api/getSession',
+    method: 'get',
+    timeout: 1500,
+    response: () => {
+      return successResponse({
+        username: 'admin',
+        role: ['admin'],
+        avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'
+      })
+    }
   }
 ] as MockMethod[]
