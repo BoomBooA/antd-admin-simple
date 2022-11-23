@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { Avatar, Dropdown, MenuProps } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,6 +17,7 @@ const User: React.FC<UserProps> = ({
 }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const dropDownMenus: MenuProps['items'] = [
     {
@@ -57,6 +59,9 @@ const User: React.FC<UserProps> = ({
         />
       ),
       onClick: () => {
+        dispatch({
+          type: 'session/destroy'
+        })
         navigate('/login')
       }
     }

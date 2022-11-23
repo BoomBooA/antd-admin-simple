@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { SESSION_STORE_NAME } from '@/config'
 
 export interface SessionInitialState {
   username: string
@@ -17,13 +18,17 @@ export const sessionSlice = createSlice({
   initialState: sessionInitialState,
   reducers: {
     update(state, action) {
-      state = {
+      return {
         ...state,
         ...action.payload
       }
     },
-    destroy() {
-
+    destroy(state) {
+      sessionStorage.removeItem(SESSION_STORE_NAME)
+      return {
+        ...state,
+        ...sessionInitialState
+      }
     }
   }
 })
