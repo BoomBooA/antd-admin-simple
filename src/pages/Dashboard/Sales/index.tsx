@@ -1,4 +1,5 @@
 import React from 'react'
+import Budget from './Components/Budget'
 import Earning from './Components/Earning'
 
 const Sales: React.FC = () => {
@@ -8,7 +9,9 @@ const Sales: React.FC = () => {
         <div className='col-span-5'>
           <Earning />
         </div>
-        <div className='col-span-7'>02</div>
+        <div className='col-span-7'>
+          <Budget />
+        </div>
       </div>
     </div>
   )

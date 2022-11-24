@@ -65,7 +65,7 @@ const Root: React.FC = () => {
           </div>
         </Header>
         <Content className='m-6 mb-0'>
-          <div className='container h-full'>
+          <div className='h-full'>
             <Outlet />
           </div>
         </Content>

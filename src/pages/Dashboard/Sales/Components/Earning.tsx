@@ -29,25 +29,25 @@ const EarningCard: React.FC<EarningCardProps> = ({
   return (
     <Card>
       <div className='grid grid-cols-12'>
-        <div className='col-span-9'>
+        <div className='col-span-10'>
           <div className='text-sm text-gray-700'>{title}</div>
           <div className='text-2xl text-gray-700'>{renderValue ? renderValue(value) : value}</div>
           <div className='w-full inline-flex items-center'>
             <div className='text-xs text-slate-500'>Last Week</div>
             {changedValue > 0 ? (
-              <div className='p-2 text-green-500'>
+              <div className='px-2 text-green-500'>
                 <FontAwesomeIcon icon={solid('caret-up')} />
                 <span className='pl-2'>{`+ ${changedValue}`}</span>
               </div>
             ) : (
-              <div className='p-2 text-red-500'>
+              <div className='px-2 text-red-500'>
                 <FontAwesomeIcon icon={solid('caret-down')} />
                 <span className='pl-2'>{changedValue}</span>
               </div>
             )}
           </div>
         </div>
-        <div className='col-span-3 flex items-center justify-end'>
+        <div className='col-span-2 flex items-center justify-end'>
           <div className='w-8 h-8 flex items-center justify-center rounded'>
             <FontAwesomeIcon
               className='text-xl'
