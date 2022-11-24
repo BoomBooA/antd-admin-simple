@@ -4,6 +4,7 @@ import Root from '@/components/Root'
 import NotFound from '../pages/NotFound'
 import Login from '../pages/Login'
 import IndexPage from '../pages/index'
+import SalesPage from '../pages/Dashboard/Sales'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,13 @@ const router = createBrowserRouter([
         element: <IndexPage />
       },
       {
-        path: 'dashboard'
+        path: 'dashboard',
+        children: [
+          {
+            path: 'sales',
+            element: <SalesPage />
+          }
+        ]
       },
       {
         path: 'settings',
