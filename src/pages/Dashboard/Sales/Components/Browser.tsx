@@ -9,7 +9,6 @@ interface BrowserProps {
 }
 
 interface BrowserItemProps {
-  bordered?: boolean
   name: string
   developer: string
   visitNumber: number
@@ -91,6 +90,20 @@ const Browser: React.FC<BrowserProps> = () => {
       visitNumber: 12563,
       trending: -0.1512,
       icon: brands('opera')
+    },
+    {
+      name: 'Brave',
+      developer: 'Microsoft Corporation, Inc.',
+      visitNumber: 11000,
+      trending: -0.05,
+      icon: brands('edge')
+    },
+    {
+      name: 'IE',
+      developer: 'Microsoft Corporation, Inc.',
+      visitNumber: 300,
+      trending: -0.9,
+      icon: brands('internet-explorer')
     }
   ]
 
