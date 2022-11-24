@@ -4,12 +4,14 @@ import {
 } from 'vite'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
+import macrosPlugin from 'vite-plugin-babel-macros'
 import react from '@vitejs/plugin-react'
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
   return {
     plugins: [
       react(),
+      macrosPlugin(),
       viteMockServe({
         mockPath: 'mock',
         localEnabled: command === 'serve',
