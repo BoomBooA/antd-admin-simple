@@ -135,7 +135,6 @@ const Budget: React.FC<BudgetProps> = () => {
     xField: 'month',
     yField: 'value',
     seriesField: 'name',
-    color: ['#38bdf8', '#9ca3af'],
     autoFit: true
   }
 
