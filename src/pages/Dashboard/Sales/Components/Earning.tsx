@@ -62,7 +62,7 @@ const EarningCard: React.FC<EarningCardProps> = ({
 
 const Earning: React.FC = () => {
   return (
-    <div className='grid grid-rows-2 grid-cols-1 xl:grid-cols-2 gap-3'>
+    <div className='grid grid-rows-2 grid-cols-1 lg:grid-cols-2 gap-3'>
       <EarningCard
         title='Today Orders'
         changedValue={427}

@@ -140,7 +140,7 @@ const Budget: React.FC<BudgetProps> = () => {
   }
 
   return (
-    <Card>
+    <Card title='PROJECT BUDGET'>
       <Column {...config} />
     </Card>
   )
