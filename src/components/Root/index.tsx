@@ -1,7 +1,11 @@
 import React from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { Layout, Menu } from 'antd'
+import { ItemType } from 'antd/es/menu/hooks/useItems'
+import map from 'lodash/map'
+import isEmpty from 'lodash/isEmpty'
 import replace from 'lodash/replace'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -17,6 +21,7 @@ const { Header, Footer, Sider, Content } = Layout
 const Root: React.FC = () => {
   const app = useSelector<RootState>(state => state.app) as AppInitialState
   const session = useSelector<RootState>(state => state.session) as SessionInitialState
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -49,6 +54,18 @@ const Root: React.FC = () => {
     navigate(pagePath)
   }
 
+  const renderI18nMenus = (data: any[]): ItemType[] => {
+    return map(data, item => {
+      return {
+        ...item,
+        label: t(item.label),
+        children: isEmpty(item.children) ? null : [
+          ...renderI18nMenus(item.children)
+        ]
+      }
+    })
+  }
+
   return (
     <Layout>
       <div
@@ -69,7 +86,7 @@ const Root: React.FC = () => {
             theme='dark'
             mode='inline'
             defaultSelectedKeys={[]}
-            items={menus}
+            items={renderI18nMenus(menus)}
             onSelect={handleSelectMenu}
           />
         </Sider>
