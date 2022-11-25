@@ -1,13 +1,13 @@
+import { Navigate, RouteObject } from 'react-router-dom'
 import Authorized from '@/components/Authorized'
 import Root from '@/components/Root'
 import NotFound from '../pages/NotFound'
 import Login from '../pages/Login'
-import IndexPage from '../pages/index'
 import SalesPage from '../pages/Dashboard/Sales'
 import SettingBasic from '../pages/Settings/Basic'
 import SettingPassword from '../pages/Settings/Password'
 
-const router = [
+const router: RouteObject[] = [
   {
     path: '/',
     element: (
@@ -18,7 +18,7 @@ const router = [
     children: [
       {
         path: '',
-        element: <IndexPage />
+        element: <Navigate to='/dashboard/sales' replace />
       },
       {
         path: 'dashboard',

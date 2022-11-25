@@ -18,7 +18,10 @@ const Root: React.FC = () => {
   const session = useSelector<RootState>(state => state.session) as SessionInitialState
   const dispatch = useDispatch()
 
-  const collapsed = app.collapsed
+  const {
+    collapsed,
+    menus
+  } = app
 
   /**
    *
@@ -53,24 +56,8 @@ const Root: React.FC = () => {
           <Menu
             theme='dark'
             mode='inline'
-            defaultSelectedKeys={['1']}
-            items={[
-              {
-                key: '1',
-                icon: '',
-                label: 'nav 1'
-              },
-              {
-                key: '2',
-                icon: '',
-                label: 'nav 2'
-              },
-              {
-                key: '3',
-                icon: '',
-                label: 'nav 3'
-              }
-            ]}
+            defaultSelectedKeys={[]}
+            items={menus}
           />
         </Sider>
       </div>
