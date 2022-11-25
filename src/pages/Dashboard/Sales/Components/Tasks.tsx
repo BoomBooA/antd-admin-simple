@@ -20,7 +20,7 @@ const Tasks: React.FC = () => {
       deadline: '1 Day'
     },
     {
-      name: 'To have a complete 360° overview of sales information, having.',
+      name: 'To have a complete 360° overview of sales.',
       deadline: '2 Days'
     },
     {

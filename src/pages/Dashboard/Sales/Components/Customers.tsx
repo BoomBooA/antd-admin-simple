@@ -92,7 +92,7 @@ const Customers: React.FC = () => {
     <Card
       title='RECENT CUSTOMERS'
       bodyStyle={{
-        padding: '0 1.5rem'
+        padding: '0 2rem'
       }}
     >
       <List
