@@ -6,6 +6,7 @@ import Login from '../pages/Login'
 import SalesPage from '../pages/Dashboard/Sales'
 import SettingBasic from '../pages/Settings/Basic'
 import SettingPassword from '../pages/Settings/Password'
+import FormBasic from '../pages/Form/Basic'
 
 const router: RouteObject[] = [
   {
@@ -26,6 +27,15 @@ const router: RouteObject[] = [
           {
             path: 'sales',
             element: <SalesPage />
+          }
+        ]
+      },
+      {
+        path: 'form',
+        children: [
+          {
+            path: 'basic',
+            element: <FormBasic />
           }
         ]
       },

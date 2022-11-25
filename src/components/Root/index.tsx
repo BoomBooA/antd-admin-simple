@@ -1,7 +1,8 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Layout, Menu } from 'antd'
+import replace from 'lodash/replace'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { COPYRIGHT } from '@/config'
@@ -17,6 +18,7 @@ const Root: React.FC = () => {
   const app = useSelector<RootState>(state => state.app) as AppInitialState
   const session = useSelector<RootState>(state => state.session) as SessionInitialState
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const {
     collapsed,
@@ -35,6 +37,16 @@ const Root: React.FC = () => {
         value
       }
     })
+  }
+
+  /**
+   * Select menu event
+   * navigate to target page
+   * @param key
+   */
+  const handleSelectMenu = ({ key }: any) => {
+    const pagePath = replace(key, '-', '/')
+    navigate(pagePath)
   }
 
   return (
@@ -58,6 +70,7 @@ const Root: React.FC = () => {
             mode='inline'
             defaultSelectedKeys={[]}
             items={menus}
+            onSelect={handleSelectMenu}
           />
         </Sider>
       </div>
