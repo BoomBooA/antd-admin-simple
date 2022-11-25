@@ -25,10 +25,12 @@ const Root: React.FC = () => {
         }}
       >
         <Sider
+          breakpoint='xl'
           className='h-full !fixed !overflow-auto'
           trigger={null}
           collapsible
           collapsed={collapsed}
+          onBreakpoint={(broken) => setCollapsed(broken)}
         >
           <div className='bg-slate-500 h-8 mx-4 my-4' />
           <Menu
