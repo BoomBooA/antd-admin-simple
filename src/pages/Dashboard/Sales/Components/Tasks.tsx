@@ -53,7 +53,10 @@ const Tasks: React.FC = () => {
       }}
     >
       {data.map(item => (
-        <div className='flex items-center my-4'>
+        <div
+          key={item.name}
+          className='flex items-center my-4'
+        >
           <div className='flex-1'>
             <Checkbox defaultChecked={!item.deadline}>{item.name}</Checkbox>
           </div>
