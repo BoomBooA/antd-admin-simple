@@ -18,63 +18,72 @@ const Root: React.FC = () => {
 
   return (
     <Layout>
-      <Sider
-        className='h-screen'
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
+      <div
+        className='h-screen transition-all ease-in-out'
+        style={{
+          width: collapsed ? 80 : 200
+        }}
       >
-        <div className='bg-slate-500 h-8 mx-4 my-4' />
-        <Menu
-          theme='dark'
-          mode='inline'
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: '',
-              label: 'nav 1'
-            },
-            {
-              key: '2',
-              icon: '',
-              label: 'nav 2'
-            },
-            {
-              key: '3',
-              icon: '',
-              label: 'nav 3'
-            }
-          ]}
-        />
-      </Sider>
-      <Layout className='site-layout'>
-        <Header className='!bg-white !p-0'>
-          <div className='flex justify-between'>
-            <div className='px-6'>
-              <FontAwesomeIcon
-                className='trigger text-lg'
-                icon={collapsed ? solid('square-caret-right') : solid('square-caret-left')}
-                onClick={() => setCollapsed(!collapsed)}
-              />
+        <Sider
+          className='h-full !fixed !overflow-auto'
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+        >
+          <div className='bg-slate-500 h-8 mx-4 my-4' />
+          <Menu
+            theme='dark'
+            mode='inline'
+            defaultSelectedKeys={['1']}
+            items={[
+              {
+                key: '1',
+                icon: '',
+                label: 'nav 1'
+              },
+              {
+                key: '2',
+                icon: '',
+                label: 'nav 2'
+              },
+              {
+                key: '3',
+                icon: '',
+                label: 'nav 3'
+              }
+            ]}
+          />
+        </Sider>
+      </div>
+      <div className='flex-1'>
+        <Layout className='site-layout'>
+          <Header className='!bg-white !p-0'>
+            <div className='flex justify-between'>
+              <div className='px-6'>
+                <FontAwesomeIcon
+                  className='trigger text-lg'
+                  icon={collapsed ? solid('square-caret-right') : solid('square-caret-left')}
+                  onClick={() => setCollapsed(!collapsed)}
+                />
+              </div>
+              <div className='flex items-center'>
+                <User
+                  username={session.username}
+                />
+                <Language />
+              </div>
             </div>
-            <div className='flex items-center'>
-              <User
-                username={session.username}
-              />
-              <Language />
+          </Header>
+          <Content className='m-6 mb-0'>
+            <div className='h-full'>
+              <Outlet />
             </div>
-          </div>
-        </Header>
-        <Content className='m-6 mb-0'>
-          <div className='h-full'>
-            <Outlet />
-          </div>
-        </Content>
-        <Footer className='text-center'>
-          {COPYRIGHT}
-        </Footer>
-      </Layout>
+          </Content>
+          <Footer className='text-center'>
+            {COPYRIGHT}
+          </Footer>
+        </Layout>
+      </div>
     </Layout>
   )
 }
