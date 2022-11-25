@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Layout, Menu } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { COPYRIGHT } from '@/config'
 import { RootState } from '@/store'
+import { AppInitialState } from '@/store/app'
 import { SessionInitialState } from '@/store/session'
 import Language from '../Layout/Language'
 import User from '../Layout/User'
@@ -13,8 +14,25 @@ import User from '../Layout/User'
 const { Header, Footer, Sider, Content } = Layout
 
 const Root: React.FC = () => {
+  const app = useSelector<RootState>(state => state.app) as AppInitialState
   const session = useSelector<RootState>(state => state.session) as SessionInitialState
-  const [collapsed, setCollapsed] = useState(false)
+  const dispatch = useDispatch()
+
+  const collapsed = app.collapsed
+
+  /**
+   *
+   * @param value
+   */
+  const handleChangeCollapsed = (value: boolean) => {
+    dispatch({
+      type: 'app/update',
+      payload: {
+        key: 'collapsed',
+        value
+      }
+    })
+  }
 
   return (
     <Layout>
@@ -25,12 +43,11 @@ const Root: React.FC = () => {
         }}
       >
         <Sider
-          breakpoint='xl'
           className='h-full !fixed !overflow-auto'
           trigger={null}
           collapsible
-          collapsed={collapsed}
-          onBreakpoint={(broken) => setCollapsed(broken)}
+          collapsed={app.collapsed}
+          onBreakpoint={(broken) => handleChangeCollapsed(broken)}
         >
           <div className='bg-slate-500 h-8 mx-4 my-4' />
           <Menu
@@ -65,7 +82,7 @@ const Root: React.FC = () => {
                 <FontAwesomeIcon
                   className='trigger text-lg'
                   icon={collapsed ? solid('square-caret-right') : solid('square-caret-left')}
-                  onClick={() => setCollapsed(!collapsed)}
+                  onClick={() => handleChangeCollapsed(!collapsed)}
                 />
               </div>
               <div className='flex items-center'>
