@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Layout, Menu } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { COPYRIGHT } from '@/config'
 import { RootState } from '@/store'
 import { SessionInitialState } from '@/store/session'
@@ -51,10 +52,11 @@ const Root: React.FC = () => {
         <Header className='!bg-white !p-0'>
           <div className='flex justify-between'>
             <div className='px-6'>
-              {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                className: 'trigger text-lg',
-                onClick: () => setCollapsed(!collapsed)
-              })}
+              <FontAwesomeIcon
+                className='trigger text-lg'
+                icon={collapsed ? solid('square-caret-right') : solid('square-caret-left')}
+                onClick={() => setCollapsed(!collapsed)}
+              />
             </div>
             <div className='flex items-center'>
               <User
