@@ -110,7 +110,7 @@ const Root: React.FC = () => {
               </div>
             </div>
           </Header>
-          <Content className='m-6 mb-0'>
+          <Content className='m-4 mb-0'>
             <div className='h-full'>
               <Outlet />
             </div>
