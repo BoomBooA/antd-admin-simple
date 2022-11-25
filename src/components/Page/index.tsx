@@ -47,7 +47,7 @@ const Page: React.FC<PageProps> = ({
         <div className='flex items-center justify-end'>
           <Breadcrumb>
             {map(breadcrumbs, item => (
-              <Breadcrumb.Item>
+              <Breadcrumb.Item key={item.label}>
                 <Link to={item.url}>
                   {t(item.label)}
                 </Link>
