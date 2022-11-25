@@ -5,6 +5,8 @@ import NotFound from '../pages/NotFound'
 import Login from '../pages/Login'
 import IndexPage from '../pages/index'
 import SalesPage from '../pages/Dashboard/Sales'
+import SettingBasic from '../pages/Settings/Basic'
+import SettingPassword from '../pages/Settings/Password'
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,12 @@ const router = createBrowserRouter([
         path: 'settings',
         children: [
           {
-            path: 'basic'
+            path: 'basic',
+            element: <SettingBasic />
           },
           {
-            path: 'password'
+            path: 'password',
+            element: <SettingPassword />
           }
         ]
       }
