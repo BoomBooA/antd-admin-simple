@@ -7,7 +7,8 @@ type PageProps = {
 }
 
 const Page: React.FC<PageProps> = ({
-  children
+  children,
+  title
 }) => {
   return (
     <Card
@@ -15,7 +16,7 @@ const Page: React.FC<PageProps> = ({
         padding: '0 1.5rem'
       }}
     >
-      <h1 className='text-2xl my-8'>Account Settings</h1>
+      <h1 className='text-2xl my-8'>{title}</h1>
       {children}
     </Card>
   )

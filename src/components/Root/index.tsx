@@ -97,7 +97,7 @@ const Root: React.FC = () => {
             <div className='flex justify-between'>
               <div className='px-6'>
                 <FontAwesomeIcon
-                  className='trigger text-lg'
+                  className='cursor-pointer text-lg'
                   icon={collapsed ? solid('square-caret-right') : solid('square-caret-left')}
                   onClick={() => handleChangeCollapsed(!collapsed)}
                 />
