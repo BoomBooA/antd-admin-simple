@@ -56,13 +56,7 @@ const Page: React.FC<PageProps> = ({
           </Breadcrumb>
         </div>
       </div>
-      <Card
-        className='mt-4'
-        bodyStyle={{
-          paddingTop: 0,
-          paddingBottom: 0
-        }}
-      >
+      <Card className='mt-4'>
         {children}
       </Card>
     </div>

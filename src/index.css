@@ -13,3 +13,7 @@ body {
   max-width: 100%;
   text-align: inherit;
 }
+
+.ant-btn-primary {
+  background-color: #1677ff;
+}
