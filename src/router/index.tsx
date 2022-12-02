@@ -7,6 +7,7 @@ import SalesPage from '../pages/Dashboard/Sales'
 import SettingBasic from '../pages/Settings/Basic'
 import SettingPassword from '../pages/Settings/Password'
 import FormBasic from '../pages/Form/Basic'
+import FormWizard from '@/pages/Form/Wizard'
 
 const router: RouteObject[] = [
   {
@@ -36,6 +37,10 @@ const router: RouteObject[] = [
           {
             path: 'basic',
             element: <FormBasic />
+          },
+          {
+            path: 'wizard',
+            element: <FormWizard />
           }
         ]
       },

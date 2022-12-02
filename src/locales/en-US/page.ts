@@ -7,5 +7,6 @@ export default {
   'page.settings.password': 'Password',
   'page.form': 'Form',
   'page.form.basic': 'Form Basic',
-  'page.form.advanced': 'Form Advanced'
+  'page.form.advanced': 'Form Advanced',
+  'page.form.wizard': 'Form Wizard'
 }
